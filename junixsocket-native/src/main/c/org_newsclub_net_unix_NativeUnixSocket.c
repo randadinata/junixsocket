@@ -192,7 +192,7 @@ static int CAPABILITY_FILE_DESCRIPTORS = (1 << 2);
 static void org_newsclub_net_unix_NativeUnixSocket_throwException(JNIEnv* env,
         ExceptionType exceptionType, char* message)
 {
-    if(exceptionType < 0 || exceptionType >= kExceptionMaxExcl) {
+    if(exceptionType >= kExceptionMaxExcl) {
         exceptionType = kExceptionIllegalStateException;
     }
     const char *exceptionClass = kExceptionClasses[exceptionType];
