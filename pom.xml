@@ -58,7 +58,7 @@ In contrast to other implementations, junixsocket extends the Java Sockets API (
   <properties>
     <kohlschutter.project.base.directory>${project.basedir}</kohlschutter.project.base.directory>
     <kohlschutter.parent.directory>${project.parent.basedir}</kohlschutter.parent.directory>
-    <java.version>9</java.version>
+    <java.version>1.8</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <slf4j.version>1.7.25</slf4j.version>
@@ -216,9 +216,14 @@ In contrast to other implementations, junixsocket extends the Java Sockets API (
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.8.0</version>
             <configuration>
-              <target>9</target>
-              <release>9</release>
-              <multiReleaseOutput>true</multiReleaseOutput>
+              <target>1.8</target>
+              <multiReleaseOutput>false</multiReleaseOutput>
+              <excludes>
+                <exclude>module-info.java</exclude>
+              </excludes>
+              <testExcludes>
+                <testExclude>**/*</testExclude>
+              </testExcludes>
             </configuration>
             <executions>
               <execution>
@@ -226,17 +231,6 @@ In contrast to other implementations, junixsocket extends the Java Sockets API (
                 <goals>
                   <goal>compile</goal>
                 </goals>
-                <configuration>
-                  <target>1.8</target>
-                  <release>8</release>
-                  <multiReleaseOutput>false</multiReleaseOutput>
-                  <excludes>
-                    <exclude>module-info.java</exclude>
-                  </excludes>
-                  <testExcludes>
-                    <testExclude>**/*</testExclude>
-                  </testExcludes>
-                </configuration>
               </execution>
             </executions>
           </plugin>
