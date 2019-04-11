@@ -202,6 +202,25 @@ In contrast to other implementations, junixsocket extends the Java Sockets API (
     </profile>
 
     <profile>
+      <id>arch-s390x-Linux</id>
+      <activation>
+        <os>
+          <arch>s390x</arch>
+          <name>Linux</name>
+        </os>
+      </activation>
+      <properties>
+        <!-- Specify "junixsocket.native.aol" to override the architecture
+          AOL for this environment; see nar-maven-plugin for details -->
+        <junixsocket.native.aol>s390x-Linux-clang</junixsocket.native.aol>
+        <junixsocket.native.llvm.target>current</junixsocket.native.llvm.target>
+        <junixsocket.native.jnilib.extension>so</junixsocket.native.jnilib.extension>
+        <junixsocket.native.default.toolPath>${junixsocket.native.crossclang.toolPath}</junixsocket.native.default.toolPath>
+        <junixsocket.native.default.linkerName>clang</junixsocket.native.default.linkerName>
+      </properties>
+    </profile>
+
+    <profile>
       <id>java8-support</id>
       <activation>
         <!-- Java 8 support is enabled by default, unless you're in Eclipse,
